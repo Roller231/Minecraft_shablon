@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
         if (YandexGame.SDKEnabled && needLoad)
         {
             MyLoad();
-            Time.timeScale = 1;
+
         }
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -72,18 +73,26 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    public void SetSuper()
+    {
+        haveUnreal = true;
+        MySaxve();
+    }
 
     public void MySaxve()
     {
         YandexGame.savesData.haveSuper = haveUnreal;
-        YandexGame.savesData.lockest = locked;
+        //YandexGame.savesData.lockest = locked;
         YandexGame.SaveProgress();
     }
 
     public void MyLoad()
     {
         haveUnreal = YandexGame.savesData.haveSuper;
-        locked= YandexGame.savesData.lockest ;
+        //locked= YandexGame.savesData.lockest ;
     }
+
+
+    
     
 }

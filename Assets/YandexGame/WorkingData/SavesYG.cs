@@ -16,7 +16,7 @@ namespace YG
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
         internal bool haveSuper;
-        internal bool[] lockest;
+        //internal bool[] lockest;
 
         // Ваши сохранения
 

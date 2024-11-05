@@ -22,6 +22,8 @@ public class Building : MonoBehaviour
     private Camera m_Camera;
     public bool isMobile;
 
+    public AudioSource audioBroke;
+
     private void Start()
     {
         m_Camera = Camera.main;
@@ -70,6 +72,7 @@ public class Building : MonoBehaviour
                     if (Input.GetMouseButtonDown(0) && p_hit.collider.gameObject.layer != 7)
                     {
                         Destroy(p_hit.collider.gameObject);
+                        audioBroke.Play();
                     }
                 }
                 else
@@ -98,37 +101,49 @@ public class Building : MonoBehaviour
             var pos = new Vector3(p_hit.collider.transform.position.x - 1.0f, p_hit.collider.transform.position.y,
                 p_hit.collider.transform.position.z);
             Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+            GetComponent<AudioSource>().Play();
         }
         else if (p_hit.collider.transform.position.x - p_hit.point.x <= -0.49f)
         {
             var pos = new Vector3(p_hit.collider.transform.position.x + 1.0f, p_hit.collider.transform.position.y,
                 p_hit.collider.transform.position.z);
             Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+            GetComponent<AudioSource>().Play();
+
         }
         else if (p_hit.collider.transform.position.y - p_hit.point.y >= 0.5f)
         {
             var pos = new Vector3(p_hit.collider.transform.position.x, p_hit.collider.transform.position.y - 1.0f,
                 p_hit.collider.transform.position.z);
             Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+            GetComponent<AudioSource>().Play();
+
         }
         else if (p_hit.collider.transform.position.y - p_hit.point.y <= -0.5f)
         {
             var pos = new Vector3(p_hit.collider.transform.position.x, p_hit.collider.transform.position.y + 1.0f,
                 p_hit.collider.transform.position.z);
             Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+            GetComponent<AudioSource>().Play();
+
         }
         else if (p_hit.collider.transform.position.z - p_hit.point.z >= 0.5f)
         {
             var pos = new Vector3(p_hit.collider.transform.position.x, p_hit.collider.transform.position.y,
                 p_hit.collider.transform.position.z - 1.0f);
             Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+            GetComponent<AudioSource>().Play();
+
         }
         else if (p_hit.collider.transform.position.z - p_hit.point.z <= -0.5f)
         {
             var pos = new Vector3(p_hit.collider.transform.position.x, p_hit.collider.transform.position.y,
                 p_hit.collider.transform.position.z + 1.0f);
             Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+
+
         }
+        GetComponent<AudioSource>().Play();
     }
 
     private void PlaceCube()
@@ -149,6 +164,7 @@ public class Building : MonoBehaviour
             pos.z += 1.0f;
 
         Instantiate(Cubes[curIndex], pos, Quaternion.identity);
+        GetComponent<AudioSource>().Play();
     }
 
     public void SelectCube(int indexInList)
@@ -174,6 +190,7 @@ public class Building : MonoBehaviour
             if (p_hit.collider.gameObject.layer != 7)
             {
                 Destroy(p_hit.collider.gameObject);
+                audioBroke.Play();
             }
         }
     }
